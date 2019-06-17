@@ -1,16 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { AreaChart, ResponsiveContainer, Area, XAxis } from 'recharts';
-import { underline } from 'ansi-colors';
-
-// const TinyLineChart = React.createClass({
-//     render() {
-//         return (
-
-//         );
-//     },
-// });
-
-// ReactDOM.render(<TinyLineChart />, document.getElementById('container'));
 
 const Chart = ({ data }) => (
     <>
