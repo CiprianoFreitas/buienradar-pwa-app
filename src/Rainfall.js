@@ -4,7 +4,7 @@ import { AreaChart, ResponsiveContainer, Area, XAxis } from 'recharts';
 const Chart = ({ data }) => (
     <>
         <h2>Rainfall</h2>
-        <div style={{ width: '500px', height: '100px' }}>
+        <div style={{ width: '100vw', maxWidth: '900px', height: '100px' }}>
             <ResponsiveContainer>
                 <AreaChart height={100} data={data}>
                     <XAxis
