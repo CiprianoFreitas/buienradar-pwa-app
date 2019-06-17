@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { AreaChart, ResponsiveContainer, Area, XAxis } from 'recharts';
+import { underline } from 'ansi-colors';
 
 // const TinyLineChart = React.createClass({
 //     render() {
@@ -49,8 +50,8 @@ const Weather = ({ weather }) => (
 );
 
 const Rainfall = () => {
-    const [weather, setWeather] = useState(undefined);
-    useEffect(() => {
+    function getData() {
+        setWeather(undefined);
         navigator.geolocation.getCurrentPosition(function(position) {
             fetch(
                 `https://buienradar-api.herokuapp.com/?latitude=${position.coords.latitude}&longitude=${position.coords.longitude}`
@@ -58,9 +59,14 @@ const Rainfall = () => {
                 .then(response => response.json())
                 .then(setWeather);
         });
+    }
+    const [weather, setWeather] = useState(undefined);
+    useEffect(() => {
+        getData();
     }, []);
     return (
         <>
+            <button onClick={getData}>Refresh</button>
             <div>{weather ? <Weather weather={weather} /> : 'Loading...'}</div>
         </>
     );
