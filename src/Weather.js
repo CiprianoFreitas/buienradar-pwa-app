@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { AreaChart, ResponsiveContainer, Area, XAxis } from 'recharts';
+import React, { useEffect, useState } from "react";
+import { AreaChart, ResponsiveContainer, Area, XAxis } from "recharts";
+import { format } from "date-fns";
 
 const Chart = ({ data }) => (
     <>
@@ -32,23 +33,29 @@ const Temp = ({ forecast }) => (
 );
 
 const Forecast = ({ forecast }) => (
-    <>
-        {console.log(forecast.data.forecast)}
-        <details>
-            <summary>
-                <b>Forecast</b>
-            </summary>
-            <ul>
-                {forecast.data.forecast.map(f => (
-                    <li>
-                        <b>
-                            {f.maxtemp}° / {f.mintemp}°
-                        </b>
-                    </li>
-                ))}
-            </ul>
-        </details>
-    </>
+  <>
+    <details>
+      <summary>
+        <b>Forecast</b>
+      </summary>
+      <table style={{ width: "100%" }}>
+        <tbody>
+          {forecast.data.forecast.map(f => (
+            <tr>
+              <td align="right">
+                <i>{format(new Date(f.datetime), "iiiiii dd/MM")}</i>
+              </td>
+              <td align="left">
+                <b>
+                  {f.maxtemp}° / {f.mintemp}°
+                </b>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </details>
+  </>
 );
 
 const Weather = ({ weather }) => (
