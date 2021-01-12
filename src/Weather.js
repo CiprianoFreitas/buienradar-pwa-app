@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { AreaChart, ResponsiveContainer, Area, XAxis } from 'recharts';
-import { format } from 'date-fns';
 
 const Chart = ({ data }) => (
     <>
